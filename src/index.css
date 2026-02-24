@@ -1,0 +1,52 @@
+/* ====== RESET ====== */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background:#fff;
+  color:#111827;
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; }
+
+/* ====== LAYOUT TOKENS ====== */
+:root{
+  --container: 1200px;
+  --pad: 24px;
+
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 28px;
+
+  --brand: #4f46e5;
+  --brand2:#6d5dfc;
+  --border:#e5e7eb;
+  --muted:#6b7280;
+}
+
+/* ====== CONTAINER (use everywhere) ====== */
+.container{
+  width: min(var(--container), calc(100% - (var(--pad) * 2)));
+  margin: 0 auto;
+}
+
+/* ====== SECTION SPACING ====== */
+.section{
+  padding: 80px 0;
+  scroll-margin-top: 90px; /* offset for sticky navbar when linking */
+}
+
+/* ====== BREAKPOINTS ====== */
+@media (max-width: 1024px){
+  :root{ --container: 980px; --pad: 20px; }
+  .section{ padding: 64px 0; }
+}
+@media (max-width: 768px){
+  :root{ --container: 720px; --pad: 16px; }
+  .section{ padding: 52px 0; }
+}
+@media (max-width: 480px){
+  :root{ --pad: 14px; }
+  .section{ padding: 44px 0; }
+}
+

@@ -1,0 +1,26 @@
+:root{
+  /* Brand */
+  --brand: #4f46e5;
+  --brand-2: #6d5dfc;
+
+  /* Neutrals */
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --muted-bg: #f9fafb;
+  --border: #e5e7eb;
+
+  --text: #111827;
+  --muted: #6b7280;
+
+  /* Radius & shadow */
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 28px;
+
+  --shadow-sm: 0 10px 30px rgba(0,0,0,.06);
+  --shadow-md: 0 18px 50px rgba(0,0,0,.08);
+  --shadow-brand: 0 10px 26px rgba(79,70,229,.28);
+
+  /* Container */
+  --container: 1400px;
+}
