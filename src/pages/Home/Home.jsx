@@ -42,6 +42,8 @@ export default function Home() {
       <TrustSteps />
       {/* Pass campaign to CTA */}
       <CTA defaultCampaign={defaultCampaign} />
+      {/* ✅ Separate Note Section */}
+
       <Footer />
     </>
   );

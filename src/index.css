@@ -36,6 +36,27 @@ img{ max-width:100%; display:block; }
   scroll-margin-top: 90px; /* offset for sticky navbar when linking */
 }
 
+/* Separate note section above footer */
+.siteNote {
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 0;
+}
+
+.siteNote__inner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.siteNote p {
+  font-size: 11px;   /* recommended size */
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
 /* ====== BREAKPOINTS ====== */
 @media (max-width: 1024px){
   :root{ --container: 980px; --pad: 20px; }

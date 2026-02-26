@@ -16,7 +16,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/activities" element={<ActivitiesPage />} />
         <Route path="/activities/:slug" element={<ActivityDetail />} />
-          {/* Admin */}
+
+        {/* Admin */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
           path="/admin/activities"
@@ -26,10 +27,23 @@ export default function App() {
             </AdminProtectedRoute>
           }
         />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+
+      {/* ✅ NOTE Section (shows on ALL pages) */}
+      <section className="siteNote">
+        <div className="siteNote__inner">
+          <p>
+            *Note:Data recorded from the beginning of the current year. Manually compiled;
+            minor human errors may occur.
+          </p>
+        </div>
+      </section>
+
+      {/* ✅ Footer on ALL pages */}
+
     </BrowserRouter>
   );
 }
-
 
