@@ -1,26 +1,44 @@
-import { Redis } from "@upstash/redis";
+import { MongoClient } from "mongodb";
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN,
-});
+let cachedClient = null;
 
-const KEY = "auypct:pageviews";
+async function getClient() {
+  if (cachedClient) return cachedClient;
+
+  const uri = process.env.MONGODB_URI;
+  if (!uri) throw new Error("Missing MONGODB_URI");
+
+  const client = new MongoClient(uri);
+  await client.connect();
+  cachedClient = client;
+  return client;
+}
 
 export default async function handler(req, res) {
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Cache-Control", "no-store");
 
   try {
+    const client = await getClient();
+
+    // DB name: auypct (same as in your connection string /auypct)
+    const db = client.db("auypct");
+    const col = db.collection("site_stats");
+
+    const filter = { _id: "pageviews" };
+
     if (req.method === "POST") {
-      const views = await redis.incr(KEY);
-      return res.status(200).json({ views: Number(views) });
+      const result = await col.findOneAndUpdate(
+        filter,
+        { $inc: { views: 1 } },
+        { upsert: true, returnDocument: "after" }
+      );
+      return res.status(200).json({ views: result.value?.views ?? 0 });
     }
 
-    const views = (await redis.get(KEY)) ?? 0;
-    return res.status(200).json({ views: Number(views) });
-
+    const doc = await col.findOne(filter);
+    return res.status(200).json({ views: doc?.views ?? 0 });
   } catch (error) {
-    return res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ error: "Server error", details: String(error) });
   }
-}//
+}

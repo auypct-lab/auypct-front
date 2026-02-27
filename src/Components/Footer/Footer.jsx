@@ -1,5 +1,6 @@
 import logo from "../../assets/Images/logo.png";
 import "./Footer.css";
+import RealTimeViews from "../RealTimeViews";
 
 export default function Footer() {
   return (
@@ -58,6 +59,7 @@ export default function Footer() {
           <a href="#">Donation Policy</a>
         </div>
       </div>
+      <RealTimeViews />
     </footer>
   );
 }
