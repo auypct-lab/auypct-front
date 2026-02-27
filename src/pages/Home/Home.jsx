@@ -9,6 +9,7 @@ import FinanceBanner from "../../Components/FinanceBanner/FinanceBanner.jsx";
 import CategoryBreakdown from "../../Components/CategoryBreakdown/CategoryBreakdown.jsx";
 import TrustSteps from "../../Components/TrustSteps/TrustStep.jsx";
 import CTA from "../../Components/CTA/CTA.jsx";
+import RealTimeViews from "../../Components/RealTimeViews";
 import Footer from "../../Components/Footer/Footer.jsx";
 
 
@@ -34,6 +35,7 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
+      <RealTimeViews />
       <Trusted />
       <Transparency />
       {/* Pass campaign to FinanceBanner */}
