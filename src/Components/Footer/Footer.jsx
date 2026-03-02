@@ -1,6 +1,7 @@
+
 import logo from "../../assets/Images/logo.png";
 import "./Footer.css";
-import RealTimeViews from "../RealTimeViews";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -8,13 +9,13 @@ export default function Footer() {
       <div className="footer__grid">
         <div className="brand">
           <div className="footer__brand">
-  <img src={logo} alt="Logo" className="footer__logo" />
-  <h3>AUYPCT</h3>
-</div>
+            <img src={logo} alt="Logo" className="footer__logo" />
+            <h3>AUYPCT</h3>
+          </div>
 
           <p>
-           AU Young Professionals Charitable Trust (AU-YP-CT) is a registered public charitable trust established in 2015 by alumni of Anna University, Chennai.<br/>
-          <span> We support education, medical aid, elderly welfare, entrepreneurship, and disaster relief with complete financial transparency.</span>
+            AU Young Professionals Charitable Trust (AU-YP-CT) is a registered public charitable trust established in 2015 by alumni of Anna University, Chennai.<br/>
+            <span> We support education, medical aid, elderly welfare, entrepreneurship, and disaster relief with complete financial transparency.</span>
           </p>
 
           <div className="socials">
@@ -26,12 +27,12 @@ export default function Footer() {
 
         <div className="col">
           <h4>EXPLORE</h4>
-          <a href="#">Educational Scholarship</a>
-          <a href="#">Medical Aid</a>
-          <a href="#">Elderly Pension Scheme</a>
-          <a href="#">Self Empowerment</a>
-          <a href="#">Grocery Kit</a>
-          <a href="#">Disaster Relief </a>
+          <Link to="/activities/educational-scholarship">Educational Scholarship</Link>
+          <Link to="/activities/medical-aid">Medical Aid</Link>
+          <Link to="/activities/elderly-pension-scheme-eps">Elderly Pension Scheme</Link>
+          <Link to="/activities/self-empowerment">Self Empowerment</Link>
+          <Link to="/activities/grocery-kit">Grocery Kit</Link>
+          <Link to="/activities/disaster-relief-fund">Disaster Relief</Link>
         </div>
 
         <div className="col">
@@ -59,7 +60,6 @@ export default function Footer() {
           <a href="#">Donation Policy</a>
         </div>
       </div>
-      <RealTimeViews />
     </footer>
   );
 }

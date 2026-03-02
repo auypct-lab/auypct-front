@@ -4,6 +4,7 @@ export const CATEGORY_DATA = {
     head: "#1d4ed8",
     icon: "🎓",
     title: "EDUCATIONAL\nSCHOLARSHIP",
+    subTitle: "Support students with fees, learning materials, and mentorship — with verified distribution proofs.",
     amount: "₹28,84,477",
     beneficiaries: "422",
     rows: [
@@ -28,6 +29,7 @@ export const CATEGORY_DATA = {
     head: "#d97706",
     icon: "🏥",
     title: "MEDICAL\nAID",
+    subTitle: "Help families manage urgent medical expenses with transparent invoices and verified records.",
     amount: "₹23,47,283",
     beneficiaries: "96",
     rows: [
@@ -51,6 +53,7 @@ export const CATEGORY_DATA = {
     head: "#0284c7",
     icon: "🧓",
     title: "ELDERLY PENSION\nSCHEME (EPS)",
+    subTitle: "Monthly support for elders with clear beneficiary tracking and year-wise fund breakdown.",
     amount: "₹17,73,812",
     beneficiaries: "102",
     rows: [
@@ -73,6 +76,7 @@ export const CATEGORY_DATA = {
     head: "#6b7280",
     icon: "💼",
     title: "SELF\nEMPOWERMENT",
+    subTitle: "Skills and livelihood support to help people become self-reliant with measurable outcomes.",
     amount: "₹9,94,150",
     beneficiaries: "41",
     rows: [
@@ -95,6 +99,7 @@ export const CATEGORY_DATA = {
     head: "#3f6212",
     icon: "🛒",
     title: "GROCERY\nKIT",
+    subTitle: "Essential ration distribution for families — tracked with verified delivery and beneficiary data.",
     amount: "₹76,95,709",
     beneficiaries: "2654",
     rows: [
@@ -118,7 +123,8 @@ export const CATEGORY_DATA = {
     head: "#ea580c",
     icon: "🌪",
     title: "DISASTER\nRELIEF FUND",
-    amount: "₹6,12,099",
+    subTitle: "Rapid help during floods/fire/accidents — every contribution documented with proof updates.",
+    amount: "₹4,80,599",
     beneficiaries: "180",
     rows: [
       ["2015", "28,000", "20"],

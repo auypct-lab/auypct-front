@@ -1,3 +1,66 @@
+/* Real-time views in navbar */
+.nav__views {
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  margin-right: 0;
+  order: 3;
+}
+
+.nav__viewsBox {
+  background: #0f172a;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 90px;
+}
+.nav__viewsTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.nav__viewsCount {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #2621b2;
+}
+.nav__viewsDesc {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+/* Brand block for logo, title, tagline */
+.nav__brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav__titleTag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nav__title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+
+.nav__tagline {
+  font-size: 1.05rem;
+  color: #000000;
+  font-weight: 500;
+  margin-top: 0;
+  letter-spacing: 0.01em;
+}
 .nav{
   width: 100%;
   background:#fff;
@@ -27,7 +90,7 @@
   gap: 10px;
   font-size: 15px;
   font-weight: 700;
-  color: #111827;
+  color: #000000;
   flex-shrink: 0;
 }
 

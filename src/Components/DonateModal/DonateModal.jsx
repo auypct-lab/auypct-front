@@ -2,19 +2,24 @@ import { useEffect, useState } from "react";
 import "./DonateModal.css";
 import { createDonation } from "../../services/api";
 
-export default function DonateModal({ open, onClose, campaign }) {
+
+export default function DonateModal({ open, onClose, activities }) {
   const [msg, setMsg] = useState("");
   const [form, setForm] = useState({ donorName: "", donorPhone: "", amount: "" });
+  const [selectedSlug, setSelectedSlug] = useState(activities?.[0]?.slug || "");
 
   useEffect(() => {
     if (!open) return;
     setMsg("");
     setForm({ donorName: "", donorPhone: "", amount: "" });
+    setSelectedSlug(activities?.[0]?.slug || "");
 
     const handler = (e) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [open, onClose]);
+  }, [open, onClose, activities]);
+
+  const selectedActivity = activities?.find(a => a.slug === selectedSlug) || activities?.[0];
 
   const submitDonation = async (e) => {
     e.preventDefault();
@@ -22,7 +27,7 @@ export default function DonateModal({ open, onClose, campaign }) {
 
     try {
       await createDonation({
-        campaignId: campaign?._id,
+        campaignId: selectedActivity?._id || selectedActivity?.slug,
         donorName: form.donorName,
         donorPhone: form.donorPhone,
         amount: Number(form.amount),
@@ -47,26 +52,32 @@ export default function DonateModal({ open, onClose, campaign }) {
         <div className="modal__head">
           <div>
             <h3 className="modal__title">Start Supporting Today</h3>
-            <p className="modal__sub">{campaign?.title || "Choose a campaign"}</p>
+            <select
+              value={selectedSlug}
+              onChange={e => setSelectedSlug(e.target.value)}
+              style={{ padding: "10px", borderRadius: "10px", fontWeight: "bold", marginTop: "8px" }}
+              aria-label="Select a cause to support"
+            >
+              {activities?.map(a => (
+                <option key={a.slug} value={a.slug}>{a.title}</option>
+              ))}
+            </select>
+            <p className="modal__sub">{selectedActivity?.title || "Choose a campaign"}</p>
           </div>
           <button className="modal__close" onClick={onClose} aria-label="Close">✕</button>
         </div>
 
         <div className="modal__body">
-          {campaign?._id ? (
+          {selectedActivity ? (
             <>
               <div className="donBox">
                 <div className="donStat">
                   <span>Raised</span>
-                  <b>₹{Number(campaign.raisedAmount || 0).toLocaleString("en-IN")}</b>
-                </div>
-                <div className="donStat">
-                  <span>Goal</span>
-                  <b>₹{Number(campaign.goalAmount || 0).toLocaleString("en-IN")}</b>
+                  <b>₹{Number(selectedActivity.impactSnapshot?.totalAmount || 0).toLocaleString("en-IN")}</b>
                 </div>
                 <div className="donStat">
                   <span>Beneficiaries</span>
-                  <b>{Number(campaign.beneficiariesCount || 0).toLocaleString("en-IN")}</b>
+                  <b>{Number(selectedActivity.impactSnapshot?.beneficiaries || 0).toLocaleString("en-IN")}</b>
                 </div>
               </div>
 

@@ -40,14 +40,15 @@
 }
 .hero__btn--primary{
   border:none;
-  background: linear-gradient(135deg,#6d5dfc,#4f46e5);
+  background: linear-gradient(135deg,#6352fb,#4f47d7);
   color:#fff;
   box-shadow:0 10px 24px rgba(79,70,229,.28);
 }
 .hero__btn--outline{
-  background:#fff;
+  background:#6be2f4;
   border:1px solid #e5e7eb;
-  color:#111827;
+  color:#000000;
+  box-shadow:0 10px 24px rgba(79,70,229,.28);
 }
 @media (max-width:900px){
   .hero__title{ font-size: 42px; }

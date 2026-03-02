@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/Images/logo.png";
+import RealTimeViews from "../RealTimeViews";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -43,36 +44,41 @@ export default function Navbar() {
   return (
     <header className="nav">
       <div className="nav__inner">
-        {/* Brand - click goes home */}
-        <div className="nav__brand">
-  <img src={logo} alt="Logo" className="nav__logo" />
-</div>
-  <h1>AU Young Professionals Charitable Trust</h1>
-
-
+        {/* Real-time views (small, left side) */}
+        <div className="nav__views">
+          <RealTimeViews small />
+        </div>
+        {/* Brand block: logo, title, tagline */}
+        <div className="nav__brandBlock">
+          <div className="nav__brand">
+            <img src={logo} alt="Logo" className="nav__logo" />
+          </div>
+          <div className="nav__titleTag">
+            <h1 className="nav__title">AU Young Professionals Charitable Trust</h1>
+            <div className="nav__tagline">No one has ever become poor by giving</div>
+          </div>
+        </div>
         {/* Desktop links */}
         <nav className="nav__links">
-  <Link to="/">Home</Link> 
+          <Link to="/">Home</Link>
           {/* ✅ Explore opens separate page */}
           <Link to="/activities">Explore</Link>
-
           {/* ✅ Scroll sections */}
           <button
-    type="button"
-    className="nav__linkBtn"
-    onClick={() => goToSection("transparency")}
-  >
-    Transparency
-  </button>
-
+            type="button"
+            className="nav__linkBtn"
+            onClick={() => goToSection("transparency")}
+          >
+            Transparency
+          </button>
           <button
-    type="button"
-    className="nav__linkBtn"
-    onClick={() => goToSection("how")}
-  >
-    How it works
-  </button>
-</nav>
+            type="button"
+            className="nav__linkBtn"
+            onClick={() => goToSection("how")}
+          >
+            How it works
+          </button>
+        </nav>
 
         <div className="nav__actions">
           <button

@@ -23,9 +23,13 @@ export default function CategoryBreakdown() {
         <div className="yearLeft" style={{ background: data.color }}>
           <div className="icoBox">{data.icon}</div>
 
-          <h3 className="leftTitle">
-            {data.title.split("\n")[0]} <br /> {data.title.split("\n")[1]}
-          </h3>
+         <h3 className="leftTitle">
+  {data.title.split("\n")[0]} <br /> {data.title.split("\n")[1]}
+</h3>
+
+<p className="leftSubtitle">
+  {data.subTitle}
+</p>
 
           <div className="leftLine" />
 

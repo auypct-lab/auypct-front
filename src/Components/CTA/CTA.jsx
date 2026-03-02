@@ -2,7 +2,9 @@ import { useState } from "react";
 import "./CTA.css";
 import DonateModal from "../DonateModal/DonateModal";
 
-export default function CTA({ defaultCampaign }) {
+import { ACTIVITIES } from "../Data/activityContent";
+
+export default function CTA() {
   const [openDonate, setOpenDonate] = useState(false);
 
   return (
@@ -15,7 +17,6 @@ export default function CTA({ defaultCampaign }) {
         </p>
 
         <div className="cta__actions">
-          {/* 🔥 Button Opens Donate Popup */}
           <button
             className="btnPrimary"
             onClick={() => setOpenDonate(true)}
@@ -25,11 +26,10 @@ export default function CTA({ defaultCampaign }) {
         </div>
       </section>
 
-      {/* ✅ Donate Popup Only */}
       <DonateModal
         open={openDonate}
         onClose={() => setOpenDonate(false)}
-        campaign={defaultCampaign}
+        activities={ACTIVITIES}
       />
     </>
   );

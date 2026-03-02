@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-export default function RealTimeViews() {
+export default function RealTimeViews({ small }) {
   const [views, setViews] = useState(null);
 
   // Format number (Indian style)
@@ -11,13 +11,11 @@ export default function RealTimeViews() {
 
   useEffect(() => {
     const sessionKey = "auypct_viewed";
-    const alreadyCounted = sessionStorage.getItem(sessionKey);
 
     const increment = async () => {
       const res = await fetch("/api/views", { method: "POST" });
       const data = await res.json();
       setViews(data.views);
-      sessionStorage.setItem(sessionKey, "1");
     };
 
     const fetchViews = async () => {
@@ -26,7 +24,9 @@ export default function RealTimeViews() {
       setViews(data.views);
     };
 
-    if (!alreadyCounted) {
+    // 🔥 StrictMode-safe logic
+    if (!sessionStorage.getItem(sessionKey)) {
+      sessionStorage.setItem(sessionKey, "true"); // set immediately
       increment();
     } else {
       fetchViews();
@@ -44,6 +44,16 @@ export default function RealTimeViews() {
     return () => clearInterval(interval);
   }, []);
 
+  if (small) {
+    return (
+      <div className="nav__viewsBox">
+        <span className="nav__viewsTitle">Views</span>
+        <span className="nav__viewsCount">{formattedViews}</span>
+        <span className="nav__viewsDesc">Live, updates every 5s</span>
+      </div>
+    );
+  }
+
   return (
     <section style={{ padding: "40px 20px" }}>
       <div
@@ -59,20 +69,18 @@ export default function RealTimeViews() {
         }}
       >
         <h2 style={{ fontSize: "28px", marginBottom: "10px" }}>
-          Real-Time Website Views
+          Real-Time Views
         </h2>
-
         <div
           style={{
             fontSize: "40px",
             fontWeight: "bold",
             marginTop: "10px",
-            color: "#22c55e",
+            color: "#2621b2",
           }}
         >
-           {formattedViews}
+          {formattedViews}
         </div>
-
         <p style={{ marginTop: "10px", fontSize: "14px", opacity: 0.8 }}>
           Live visitor count updates every 5 seconds
         </p>

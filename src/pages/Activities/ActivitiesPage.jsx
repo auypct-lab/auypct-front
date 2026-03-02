@@ -103,10 +103,10 @@ export default function ActivitiesPage() {
                       Read More
                     </Link>
 
-                    {/* Optional: keep these links if you want */}
-                    <a className="actBtn actBtn--ghost" href="/#support">
+                    {/* Updated: Support this cause scrolls to section in detail page */}
+                    <Link className="actBtn actBtn--ghost" to={`/activities/${a.slug}#support`}>
                       Support this cause
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -121,9 +121,9 @@ export default function ActivitiesPage() {
               Our system is designed for trust: invoices, audit trail, beneficiary updates,
               and public verification.
             </p>
-            <a className="actPrimary" href="/#support">
-              Start Supporting Today
-            </a>
+            {/* <a className="actPrimary" href="/#support"> */}
+              {/* Start Supporting Today */}
+            {/* </a> */}
           </div>
         </section>
       </main>

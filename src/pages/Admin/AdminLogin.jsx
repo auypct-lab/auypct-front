@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../../axios";
-import { setAuth } from "../../utils/adminAuth";
+import API from "../../axios";             // ✅ fixed path
+import { setAuth } from "../../utils/adminAuth"; // ✅ fixed path
 import "./Admin.css";
 
 export default function AdminLogin() {
@@ -38,12 +38,22 @@ export default function AdminLogin() {
         <form onSubmit={onSubmit} className="adminForm">
           <label>
             Email
-            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required />
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              required
+            />
           </label>
 
           <label>
             Password
-            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" required />
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              required
+            />
           </label>
 
           <button className="adminBtn" type="submit" disabled={loading}>
@@ -51,9 +61,7 @@ export default function AdminLogin() {
           </button>
         </form>
 
-        <div className="adminHint">
-          Tip: First time? Create an admin using backend route <b>/api/auth/register</b> (use once), then remove it.
-        </div>
+          {/* Tip removed as per update */}
       </div>
     </div>
   );
