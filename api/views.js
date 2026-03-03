@@ -27,32 +27,17 @@ export default async function handler(req, res) {
 
     const filter = { _id: "pageviews" };
 
-    const SEED_VIEWS = 200; // ✅ starting existing views
-
     if (req.method === "POST") {
       const result = await col.findOneAndUpdate(
         filter,
-        {
-          // ✅ if doc doesn't exist, create it with 200 first
-          $setOnInsert: { views: SEED_VIEWS },
-          // ✅ then increment by 1 for this new session
-          $inc: { views: 1 },
-        },
+        { $inc: { views: 1 } },
         { upsert: true, returnDocument: "after" }
       );
-
-      // If created now: 200 + 1 => 201
-      // If already existed: increments normally
-      return res.status(200).json({ views: result.value?.views ?? SEED_VIEWS });
+      return res.status(200).json({ views: result.value?.views ?? 0 });
     }
 
-    if (req.method === "GET") {
-      const doc = await col.findOne(filter);
-      return res.status(200).json({ views: doc?.views ?? SEED_VIEWS });
-    }
-
-    // Optional: handle other methods
-    return res.status(405).json({ error: "Method not allowed" });
+    const doc = await col.findOne(filter);
+    return res.status(200).json({ views: doc?.views ?? 0 });
   } catch (error) {
     return res.status(500).json({ error: "Server error", details: String(error) });
   }
