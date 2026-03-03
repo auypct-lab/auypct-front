@@ -47,7 +47,7 @@ export default function RealTimeViews({ small }) {
   if (small) {
     return (
       <div className="nav__viewsBox">
-        <span className="nav__viewsTitle">Views</span>
+        <span className="nav__viewsTitle">Real-Time Views</span>
         <span className="nav__viewsCount">{formattedViews}</span>
         <span className="nav__viewsDesc">Live, updates every 5s</span>
       </div>
@@ -61,11 +61,11 @@ export default function RealTimeViews({ small }) {
           maxWidth: "1100px",
           margin: "0 auto",
           textAlign: "center",
-          background: "#0f172a",
-          color: "#fff",
+          background: "#000000",
+          color: "#ffffff",
           padding: "30px",
           borderRadius: "16px",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
         }}
       >
         <h2 style={{ fontSize: "28px", marginBottom: "10px" }}>
@@ -76,7 +76,7 @@ export default function RealTimeViews({ small }) {
             fontSize: "40px",
             fontWeight: "bold",
             marginTop: "10px",
-            color: "#2621b2",
+            color: "#2621d0",
           }}
         >
           {formattedViews}

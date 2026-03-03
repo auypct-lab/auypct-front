@@ -5,11 +5,13 @@
   margin-left: 25px;
   margin-right: 0;
   order: 3;
+  position: relative;
+  z-index: 1;
 }
 
 .nav__viewsBox {
-  background: #0f172a;
-  color: #fff;
+  background: #000000;
+  color: #39c7f2;
   padding: 6px 14px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
@@ -26,7 +28,7 @@
 .nav__viewsCount {
   font-size: 1.15rem;
   font-weight: bold;
-  color: #2621b2;
+  color: #ffffff;
 }
 .nav__viewsDesc {
   font-size: 0.7rem;
@@ -224,8 +226,8 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ===== Mobile Menu (FIX CLICK ISSUE) ===== */
-.mobile{
+/* ===== Mobile Menu Panel (FIX LAYOUT) ===== */
+.mobile {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -234,39 +236,72 @@
   transition: opacity .2s ease;
 }
 
-.mobile--open{
+.mobile--open {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Backdrop BEHIND panel */
-.mobile__backdrop{
+/* Backdrop */
+.mobile__backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,.35);
   border: none;
-  z-index: 0;               /* ✅ behind */
 }
 
-/* Panel ABOVE backdrop */
-/* ✅ Make buttons look like links inside mobile panel */
-.mobile__panel button{
+/* ✅ Drawer panel */
+.mobile__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(340px, 86vw);
+  background: #fff;
+  padding: 18px 16px;
+  border-radius: 18px 0 0 18px;
+  box-shadow: -20px 0 60px rgba(0,0,0,.18);
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+/* ✅ Make <Link> look like buttons */
+.mobile__panel a {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  color: #111827;
+  text-decoration: none;
+  text-align: left;
+}
+
+.mobile__panel a:hover {
+  background: #f3f4f6;
+}
+
+/* ✅ Your button-as-link styles (keep, but align left) */
+.mobile__panel button {
   width: 100%;
   padding: 12px 12px;
   border-radius: 12px;
   font-weight: 800;
   color:#111827;
-  text-align: center;
-
+  text-align: left;          /* ✅ left align (not center) */
   background: transparent;
   border: none;
   cursor: pointer;
 }
 
-.mobile__panel button:hover{
+.mobile__panel button:hover {
   background:#f3f4f6;
 }
-.mobile__cta{
+
+/* CTA button full width */
+.mobile__cta {
   width: 100%;
   margin-top: 8px;
   font-size: 14px;
