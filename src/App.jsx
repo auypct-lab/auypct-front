@@ -5,6 +5,9 @@ import ActivitiesPage from "./pages/Activities/ActivitiesPage.jsx";
 import ActivityDetail from "./pages/Activities/ActivityDetail.jsx";
 import AdminLogin from "./pages/Admin/AdminLogin.jsx";
 import AdminActivities from "./pages/Admin/AdminActivities.jsx";
+import AdminCourses from "./pages/Admin/AdminCourses.jsx";
+import CoursesPage from "./pages/Courses/CoursesPage.jsx";
+import CourseDetail from "./pages/Courses/CourseDetail.jsx";
 import AdminProtectedRoute from "./routes/AdminProtectedRoute.jsx";
 
 
@@ -27,6 +30,18 @@ export default function App() {
             </AdminProtectedRoute>
           }
         />
+        <Route
+          path="/admin/courses"
+          element={
+            <AdminProtectedRoute>
+              <AdminCourses />
+            </AdminProtectedRoute>
+          }
+        />
+
+        {/* Courses */}
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/courses/:slug" element={<CourseDetail />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

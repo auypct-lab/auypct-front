@@ -10,3 +10,7 @@ export const createDonation = (payload) =>
 
 export const fetchTransparencyStats = () =>
   API.get("/stats/transparency");
+
+// Courses
+export const fetchCourses = () => API.get("/courses");
+export const fetchCourseBySlug = (slug) => API.get(`/courses/${slug}`);

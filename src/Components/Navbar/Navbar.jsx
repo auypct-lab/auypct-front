@@ -63,6 +63,7 @@ export default function Navbar() {
           <Link to="/">Home</Link>
           {/* ✅ Explore opens separate page */}
           <Link to="/activities">Explore</Link>
+          <Link to="/courses">Course</Link>
           {/* ✅ Scroll sections */}
           <button
             type="button"
@@ -125,6 +126,7 @@ export default function Navbar() {
           {/* ✅ Explore separate page */}
           <Link to="/" onClick={() => setOpen(false)}>Home</Link>
           <Link to="/activities" onClick={() => setOpen(false)}>Explore</Link>
+          <Link to="/courses" onClick={() => setOpen(false)}>Courses</Link>
 
           {/* ✅ Scroll sections */}
           <button type="button" onClick={() => goToSection("transparency")}>Transparency</button>
